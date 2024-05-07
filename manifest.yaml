@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      containers:
+        - name: main
+          image: nginx:latest
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postsync-job
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: cypress
+          image: cypress/included:latest
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              while true; do
+                echo "hello"
+                sleep 10
+              done
+          volumeMounts:
+          - name: git-source
+            mountPath: /tmp/git
+      initContainers:
+      - image: k8s.gcr.io/git-sync:v3.0.1
+        name: git-data
+        volumeMounts:
+        - name: git-source
+          mountPath: /tmp/git
+        env:
+        - name: GIT_SYNC_REPO
+          value: https://github.com/cypress-io/cypress-docker-images.git
+        - name: GIT_SYNC_BRANCH
+          value: master
+        - name: GIT_SYNC_DEPTH
+          value: "1"
+        - name: GIT_SYNC_DEST
+          value: git-sync
+        - name: GIT_SYNC_ONE_TIME
+          value: "true"
+      volumes:
+      - name: git-source
+        emptyDir: {}
