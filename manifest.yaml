@@ -35,10 +35,7 @@ spec:
           command: ["/bin/bash", "-c"]
           args:
             - |
-              while true; do
-                echo "hello"
-                sleep 10
-              done
+              echo "hello"
           volumeMounts:
           - name: git-source
             mountPath: /tmp/git
