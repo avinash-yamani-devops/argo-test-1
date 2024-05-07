@@ -1,21 +1,32 @@
 ---
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: backend
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      tier: backend
+      app: nginx
   template:
     metadata:
       labels:
-        tier: backend
+        app: nginx
     spec:
       containers:
-        - name: main
-          image: nginx:latest
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
 ---
 apiVersion: batch/v1
 kind: Job
@@ -39,6 +50,13 @@ spec:
           volumeMounts:
           - name: git-source
             mountPath: /tmp/git
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
       initContainers:
       - image: k8s.gcr.io/git-sync:v3.0.1
         name: git-data
