@@ -47,9 +47,10 @@ spec:
           args:
             - |
               echo "hello"
+              cypress run
           volumeMounts:
           - name: git-source
-            mountPath: /tmp/git
+            mountPath: /e2e
           resources:
             requests:
               memory: "64Mi"
