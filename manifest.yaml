@@ -75,10 +75,7 @@ spec:
         - name: GIT_SYNC_ONE_TIME
           value: "true"
         - name: GIT_SYNC_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: git-creds
-              key: username
+          value: avinash.yamani.devops@gmail.com
         - name: GIT_SYNC_PASSWORD
           valueFrom:
             secretKeyRef:
