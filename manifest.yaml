@@ -46,5 +46,6 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            echo "Hello world"
+            echo "Hello world-1"
+            sleep 5
 
