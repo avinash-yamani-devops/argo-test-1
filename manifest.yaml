@@ -46,10 +46,7 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            while true; do
-              cypress run  -P "/e2e/cypress/"
-              sleep 30
-            done
+            cypress run  -P "/e2e/cypress/"
         volumeMounts:
         - name: git-source
           mountPath: /e2e
