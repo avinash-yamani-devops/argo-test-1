@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: 
-        image: chentex/random-logger
+        image: nginx
         resources:
           requests:
             memory: "64Mi"
