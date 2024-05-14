@@ -1,0 +1,21 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postsync-job
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  ttlSecondsAfterFinished: 240
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: nginx
+        image: nginx
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            echo "Hello world-1"
+            sleep 5
