@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: nginx:stable-otel
         resources:
           requests:
             memory: "64Mi"
