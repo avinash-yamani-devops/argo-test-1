@@ -1,24 +1,17 @@
-{{- if eq .Values.region "us-west-2" }}
----
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: postsync-job
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  name: liquibase
 spec:
-  ttlSecondsAfterFinished: 240
+  ttlSecondsAfterFinished: 120
   template:
     spec:
       restartPolicy: Never
       containers:
-      - name: nginx
-        image: nginx
-        command: ["/bin/bash", "-c"]
+      - name: liquibase
+        image: liquibase:alpine
+        command:
+        - /bin/bash
+        - -c
         args:
-          - |
-            sleep 20
-            echo "Hello world-1"
-            sleep 5
-{{- end }}
+        - liquibase validate
