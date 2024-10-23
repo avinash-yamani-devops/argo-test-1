@@ -1,17 +1,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: liquibase
+  name: sleep
 spec:
   # ttlSecondsAfterFinished: 120
   template:
     spec:
       restartPolicy: Never
       containers:
-      - name: liquibase
-        image: liquibase:alpine
+      - name: sleep
+        image: nginx:alpine
         command:
-        - /bin/bash
+        - /bin/sh
         - -c
         args:
-        - liquibase
+        - sleep 5
