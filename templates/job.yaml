@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: sleep
 spec:
-  # ttlSecondsAfterFinished: 120
+  ttlSecondsAfterFinished: 30
   template:
     spec:
       restartPolicy: Never
