@@ -17,4 +17,4 @@ spec:
         - /bin/sh
         - -c
         args:
-        - sleep 5
+        - sleep 10
