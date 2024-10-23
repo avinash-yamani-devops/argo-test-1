@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: liquibase
 spec:
-  ttlSecondsAfterFinished: 120
+  # ttlSecondsAfterFinished: 120
   template:
     spec:
       restartPolicy: Never
@@ -14,4 +14,4 @@ spec:
         - /bin/bash
         - -c
         args:
-        - liquibase validate
+        - liquibase
