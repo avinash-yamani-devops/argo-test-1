@@ -12,7 +12,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: sleep
-        image: nginx:otel
+        image: nginx:stable-otel
         command:
         - /bin/sh
         - -c
