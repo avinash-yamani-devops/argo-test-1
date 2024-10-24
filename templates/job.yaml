@@ -2,8 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
    generateName: nginx-sleep-
-   # annotations:
-   #   argocd.argoproj.io/hook: Postsync
+   annotations:
+     argocd.argoproj.io/hook: Postsync
 spec:
   completions: 1
   ttlSecondsAfterFinished: 30
