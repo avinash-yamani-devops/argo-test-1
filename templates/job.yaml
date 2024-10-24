@@ -1,14 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-   name: sleep
-   # generateName: nginx-sleep-
-   annotations:
-      argocd.argoproj.io/hook: Postsync
-      argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+  name: nginx
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+
 spec:
-  completions: 1
-  ttlSecondsAfterFinished: 30
   template:
     spec:
       restartPolicy: Never
