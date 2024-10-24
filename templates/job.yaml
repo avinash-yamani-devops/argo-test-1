@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: jobtest
-        image: nginx:latest
+        image: nginx:stable
         command: ["echo", "job-test"] 
       restartPolicy: Never
