@@ -12,5 +12,3 @@ spec:
       containers:
       - name: sleep
         image: nginx:stable-otel
-        command:
-        - sleep 30
