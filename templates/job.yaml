@@ -1,18 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sleep
-  # annotations:
-    # argocd.argoproj.io/sync-options: Replace=true
-    # argocd.argoproj.io/hook: PostSync
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
-    # argocd.argoproj.io/hook: Sync
-    # argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
-  # ArgoCD metadata:
-  generateName: db-migrator-
-  annotations:
-    # argocd.argoproj.io/hook: Sync
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+   generateName: nginx-sleep-
+   annotations:
+     argocd.argoproj.io/hook: PreSyn
 spec:
   # completions: 1
   ttlSecondsAfterFinished: 30
