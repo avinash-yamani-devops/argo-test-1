@@ -5,7 +5,7 @@ metadata:
    # annotations:
    #   argocd.argoproj.io/hook: Postsync
 spec:
-  # completions: 1
+  completions: 1
   ttlSecondsAfterFinished: 30
   template:
     spec:
