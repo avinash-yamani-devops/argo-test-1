@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
       - name: jobtest
-        image: nginx
+        image: nginx:otel
         command: ["echo", "job-test"] 
       restartPolicy: Never
