@@ -14,4 +14,4 @@ spec:
       restartPolicy: Never
       containers:
       - name: sleep
-        image: nginx:stable-otel
+        image: nginx:otel
