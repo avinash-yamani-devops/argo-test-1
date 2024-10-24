@@ -1,14 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  # generateName: sleep
   name: sleep
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
     # argocd.argoproj.io/hook: PreSync
     # argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
-  backoffLimit: 1
   completions: 1
   ttlSecondsAfterFinished: 30
   template:
