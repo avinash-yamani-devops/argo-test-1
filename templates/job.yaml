@@ -1,11 +1,9 @@
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: nginx
+apiVersion: batch/v1 
+kind: Job 
+metadata: 
+  generateName: nginx-test- 
   annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
-
+    argocd.argoproj.io/hook: PostSync 
 spec:
   template:
     spec:
