@@ -12,9 +12,4 @@ spec:
       restartPolicy: Never
       containers:
       - name: sleep
-        image: nginx:alpine
-        command:
-        - /bin/sh
-        - -c
-        args:
-        - sleep 11
+        image: nginx:stable-otel
