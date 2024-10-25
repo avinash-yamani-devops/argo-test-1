@@ -15,5 +15,5 @@ spec:
       containers:
       - name: jobtest
         image: nginx
-        command: ["echo""job-test"] 
+        command: ["echon","job-test"] 
       restartPolicy: Never
