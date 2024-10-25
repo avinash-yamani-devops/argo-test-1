@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: jobtest
-        image: nginx
+        image:  busybox
         command: ["echon","job-test"] 
       restartPolicy: Never
