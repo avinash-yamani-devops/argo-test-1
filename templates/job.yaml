@@ -15,5 +15,5 @@ spec:
       containers:
       - name: jobtest
         image:  busybox
-        command: ["echon","job-test"] 
+        command: ["echon","job-tester"] 
       restartPolicy: Never
