@@ -1,19 +1,19 @@
-# apiVersion: batch/v1
-# kind: Job
-# metadata:
-#   name: nginx
-#   # generateName: nginx-sleep-
-#   annotations:
-#     argocd.argoproj.io/hook: PostSync
-#     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
-# spec:
-#   backoffLimit: 0
-#   # completions: 1
-#   # ttlSecondsAfterFinished: 30000
-#   template:
-#     spec:
-#       containers:
-#       - name: jobtest
-#         image:  busybox
-#         command: ["echon","job-test"] 
-#       restartPolicy: Never
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nginx
+  # generateName: nginx-sleep-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 0
+  # completions: 1
+  # ttlSecondsAfterFinished: 30000
+  template:
+    spec:
+      containers:
+      - name: jobtest
+        image:  busybox
+        command: ["echon","job-test"] 
+      restartPolicy: Never
