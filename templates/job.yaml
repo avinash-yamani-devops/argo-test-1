@@ -1,19 +1,17 @@
 apiVersion: batch/v1
 kind: Job
-metadata:
-  name: nginx
-  # generateName: nginx-sleep-
+metadata: 
+  name: argocd-cypress-test
+  namespace: default
   annotations:
-    argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/hook: "PostSync"
+    argocd.argoproj.io/hook-delete-policy: "HookSucceeded"
 spec:
-  backoffLimit: 0
-  # completions: 1
-  # ttlSecondsAfterFinished: 30000
+  ttlSecondsAfterFinished: 120
   template:
     spec:
-      containers:
-      - name: jobtest
-        image:  busybox
-        command: ["echon","job-tester"] 
       restartPolicy: Never
+      containers:
+      - name: cypress-test
+        image: localhost:5000/avinash-cypress-test:v1.0.0
+        imagePullPolicy: Always
