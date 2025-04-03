@@ -17,6 +17,6 @@ spec:
       containers:
       - image: nginx:stable
         name: nginx
-      env:
-      - name: test
-        value: 1
+        env:
+        - name: test
+          value: "1"
