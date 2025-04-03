@@ -15,3 +15,11 @@ spec:
       - name: cypress-test
         image: localhost:5000/avinash-cypress-test:v1.0.2
         imagePullPolicy: Always
+        volumeMounts:
+        - name: cypress-auth
+          mountPath: /qa/cypress.env.json
+          subPath: cypress.env.json
+      volumes:
+      - name: cypress-auth
+        secret:
+          secretName: cypress
