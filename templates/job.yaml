@@ -5,7 +5,7 @@ metadata:
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation, HookSucceeded
 spec:
   ttlSecondsAfterFinished: 120
   template:
@@ -15,11 +15,3 @@ spec:
       - name: cypress-test
         image: localhost:5000/avinash-cypress-test:v1.0.3
         imagePullPolicy: Always
-        volumeMounts:
-        - name: cypress-auth
-          mountPath: QA/cypress.env.json
-          subPath: cypress.env.json
-      volumes:
-      - name: cypress-auth
-        secret:
-          secretName: cypress
