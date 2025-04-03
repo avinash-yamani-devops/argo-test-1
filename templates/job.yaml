@@ -14,4 +14,7 @@ spec:
       containers:
       - name: cypress-test
         image: localhost:5000/avinash-cypress-test:v1.0.2
-        imagePullPolicy: Always
+        imagePullPolicy: Always       
+        command: ["/bin/bash", "-c"]
+        args:
+          - "cypress run -P '/qa/'"
