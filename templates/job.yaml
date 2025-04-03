@@ -13,11 +13,11 @@ spec:
       restartPolicy: Never
       containers:
       - name: cypress-test
-        image: localhost:5000/avinash-cypress-test:v1.0.2
+        image: localhost:5000/avinash-cypress-test:v1.0.3
         imagePullPolicy: Always
         volumeMounts:
         - name: cypress-auth
-          mountPath: /qa/cypress.env.json
+          mountPath: QA/cypress.env.json
           subPath: cypress.env.json
       volumes:
       - name: cypress-auth
