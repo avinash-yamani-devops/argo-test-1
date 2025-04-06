@@ -16,7 +16,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: cypress-test
-        image: localhost:5000/avinash-cypress-test:v1.0.1
+        image: localhost:5000/avinash-cypress-test:v1.0.0
         imagePullPolicy: Always
         command: ["/bin/bash", "-c"]
         args:
