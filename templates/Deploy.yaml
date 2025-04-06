@@ -20,4 +20,4 @@ spec:
         name: nginx
         env:
         - name: test
-          value: "5"
+          value: "6"
