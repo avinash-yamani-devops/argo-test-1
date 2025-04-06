@@ -10,6 +10,7 @@ metadata:
     # argocd.argoproj.io/continue-on: always
 spec:
   backoffLimit: 0
+  ttlSecondsAfterFinished: 0
   template:
     spec:
       restartPolicy: Never
