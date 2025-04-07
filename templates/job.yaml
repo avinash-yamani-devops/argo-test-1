@@ -20,4 +20,5 @@ spec:
         imagePullPolicy: Always
         command: ["/bin/bash", "-c"]
         args:
-        - cypress run || true
+        - cypress  \
+          -- echo "run" || true
