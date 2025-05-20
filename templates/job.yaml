@@ -7,20 +7,18 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
-    # argocd.argoproj.io/continue-on: always
 spec:
-  backoffLimit: 0
-  # ttlSecondsAfterFinished: 0
   template:
     spec:
       restartPolicy: Never
       containers:
       - name: cypress-test
-        image: localhost:5000/avinash-cypress-test:v1.0.1
+        image: localhost:5000/avinash-cypress-test:v1.0.0
         imagePullPolicy: Always
-        command: ["/bin/bash", "-c"]
-        args:
-        - |
-          cypress run \
-          --browser chrome
-          exit 0
+        resources:
+          limits:
+            cpu: 512m
+            memory: 1G
+          requests:
+            cpu: 256m
+            memory: 512Mi
