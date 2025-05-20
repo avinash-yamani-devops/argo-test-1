@@ -22,4 +22,3 @@ spec:
           requests:
             cpu: 256m
             memory: 512Mi
-        command: ["exit 0"]
