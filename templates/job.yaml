@@ -23,5 +23,5 @@ spec:
             cpu: 256m
             memory: 512Mi
         args:
-        - cypress run --record --browser chrome
+        - cypress run --browser chrome
         - exit 0
